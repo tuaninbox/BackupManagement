@@ -1,0 +1,23 @@
+{%extends "layout.html"%}
+{% block title %}
+CEWA Backup Login
+{% endblock %}
+{% block content%}
+{% if error %}
+	<p><strong>Error:</strong>{{ error }}
+{% endif %}
+{% for message in get_flashed_messages() %}
+<h3>
+	{{ message }}
+</h3>
+{% endfor %}
+<form action="" method=post>
+<dl>
+<dt>Username:
+<dd><input type=text name=username >
+<dt>Password:
+<dd><input type=password name=password>
+</dl>
+<p><input type=submit value=Login>
+</form>
+{% endblock %}

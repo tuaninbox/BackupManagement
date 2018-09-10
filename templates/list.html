@@ -1,0 +1,28 @@
+{%extends "layout.html"%}
+{% block title %}
+CEWA Backup
+{% endblock %}
+{% block content%}
+<article>
+    <header>
+        <h2>{{ title }}</h2>
+    </header>
+    <h3>
+        {% if parent[0]|length > 0 and parent[1]|length > 0 %}
+            <a href="/{{parent[0]}}"><img src="{{ url_for('static', filename='img/back.gif') }}">Up</a>
+        {% elif parent[0]|length == 0 and parent[1]|length > 0 %}
+            <a href="/configuration"><img src="{{ url_for('static', filename='img/back.gif') }}">Up</a>
+        {% endif %}
+    </h3>
+    <ul>
+        {% for folder in folders %}
+            <li><a href="/{{ path }}{{ folder }}"><img src="{{ url_for('static', filename='img/folder.png') }}" height="30" width="30">{{ folder }}</a></li>
+        {% endfor %}
+        {% for file in files %}
+            <li><a href="/view/{{ path }}{{ file }}" target="_blank">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+</article>
+{% endblock %}
+{% block sidebar%}
+{% endblock %}
